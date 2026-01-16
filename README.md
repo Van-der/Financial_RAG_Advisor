@@ -73,31 +73,32 @@ Genai_patham/
 ├── requirements.txt
 ├── README.md
 └── .gitignore
+```
 
-
-## Setup
+### Setup
 
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/Van-der/Financial_RAG_Advisor.git
 cd Financial_RAG_Advisor
-
+```
 2. Create and activate a virtual environment
-
+```bash
 python -m venv .venv
 source .venv/bin/activate      # Linux / macOS
 # .venv\Scripts\activate       # Windows
-
+```
 3. Install dependencies
-
+```bash
 pip install -r requirements.txt
-
+```
 4. Install and start Ollama
-
+```bash
 ollama pull ministral-3
 ollama serve
+```
 
-## Usage
+### Usage
 
 ### Step 1: Index documents
 
