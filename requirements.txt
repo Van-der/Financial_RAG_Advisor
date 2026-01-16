@@ -1,0 +1,22 @@
+# Core Python
+python-dotenv>=1.0.0
+
+# LangChain ecosystem
+langchain>=0.1.16
+langchain-community>=0.0.34
+
+# Embeddings
+sentence-transformers>=2.2.2
+
+# Vector store
+faiss-cpu>=1.7.4
+
+# PDF / document loading
+pypdf>=4.0.0
+
+# LLM local inference
+ollama>=0.1.7
+
+# Utilities
+numpy>=1.24.0
+tqdm>=4.66.0
