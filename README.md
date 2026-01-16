@@ -1,17 +1,31 @@
-````md
 # Grounded Financial Document Question Answering (RAG)
 
-This project implements a **Retrieval-Augmented Generation (RAG)** pipeline for answering factual questions over financial documents with **strict grounding to source text**.
+A **strictly grounded Retrieval-Augmented Generation (RAG)** system for answering factual questions over financial documents such as annual reports and regulatory filings.
 
-The system is designed to avoid hallucinations by returning an answer **only if the information is explicitly present in the documents**. Otherwise, it responds with a fixed refusal message.
+The system is designed to **eliminate hallucinations** by enforcing a simple rule:
+
+> **If an answer is not explicitly present in the documents, it will not be generated.**
 
 ---
 
 ## Overview
 
-The pipeline ingests financial documents (PDF and text), splits them into overlapping chunks, embeds them into a vector space, retrieves relevant context using similarity search, and generates grounded answers using a **locally hosted large language model**.
+This project implements an end-to-end RAG pipeline that ingests financial documents, retrieves relevant context using semantic search, and generates answers using a **locally hosted large language model**.
 
-The entire system runs **fully offline**, without relying on external LLM APIs.
+All responses are grounded in retrieved document text.  
+If the information required to answer a question is missing, the system refuses to answer.
+
+The entire pipeline runs **fully offline**, without relying on external LLM APIs.
+
+---
+
+## Key Capabilities
+
+- Financial document ingestion (PDF / TXT)
+- Semantic chunking with overlap
+- Dense vector embeddings and FAISS-based retrieval
+- Local LLM inference using Ollama (Mistral)
+- Strict grounding and refusal-based hallucination control
 
 ---
 
@@ -28,7 +42,7 @@ The entire system runs **fully offline**, without relying on external LLM APIs.
 
 ## System Pipeline
 
-1. Load financial documents (PDF / TXT)
+1. Load financial documents from disk
 2. Split documents into overlapping text chunks
 3. Generate embeddings for each chunk
 4. Store embeddings in a FAISS index
@@ -54,46 +68,34 @@ Genai_patham/
 │   └── training.ipynb           # Development and experimentation
 │
 ├── ingest.py                    # Document ingestion and indexing
-├── query.py                     # CLI interface for RAG queries
+├── query.py                     # CLI interface for querying the system
 │
 ├── requirements.txt
 ├── README.md
 └── .gitignore
-````
 
----
 
 ## Setup
 
 ### 1. Clone the repository
-
 ```bash
-git clone https://github.com/your-username/Genai_patham.git
-cd Genai_patham
-```
+git clone https://github.com/Van-der/Financial_RAG_Advisor.git
+cd Financial_RAG_Advisor
 
-### 2. Create and activate a virtual environment
+2. Create and activate a virtual environment
 
-```bash
 python -m venv .venv
 source .venv/bin/activate      # Linux / macOS
 # .venv\Scripts\activate       # Windows
-```
 
-### 3. Install dependencies
+3. Install dependencies
 
-```bash
 pip install -r requirements.txt
-```
 
-### 4. Install and start Ollama
+4. Install and start Ollama
 
-```bash
 ollama pull ministral-3
 ollama serve
-```
-
----
 
 ## Usage
 
