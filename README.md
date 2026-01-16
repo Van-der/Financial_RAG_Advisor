@@ -97,7 +97,7 @@ pip install -r requirements.txt
 ollama pull ministral-3
 ollama serve
 ```
----
+
 
 ## Usage
 
@@ -122,12 +122,11 @@ python query.py
 **Example queries**
 
 ```
-By what percentage did NVIDIA’s revenue grow year-over-year in Fiscal 2025?
-What major industry shift drove NVIDIA’s performance in Fiscal 2025?
-What is NVIDIA’s stock price today?
+>> By what percentage did NVIDIA’s revenue grow year-over-year in Fiscal 2025?
+>> What major industry shift drove NVIDIA’s performance in Fiscal 2025?
+>> What is NVIDIA’s stock price today?
 ```
 
----
 
 ## Grounding and Hallucination Control
 
@@ -143,7 +142,7 @@ Not found in documents.
 
 This behavior is enforced through both prompt constraints and programmatic guardrails.
 
----
+
 
 ## Current Limitations
 
@@ -151,7 +150,6 @@ This behavior is enforced through both prompt constraints and programmatic guard
 * CLI-only interface
 * Single-domain focus (financial filings)
 
----
 
 ## Possible Extensions
 
